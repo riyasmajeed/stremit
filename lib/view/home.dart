@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:streamt/view/colors/colors.dart';
 import 'package:streamt/view/movie/screens.dart/homepagevide.dart';
+import 'package:streamt/view/movie/screens.dart/popular.dart';
 import 'package:streamt/view/movie/screens.dart/profilepage.dart';
+import 'package:streamt/view/movie/screens.dart/search.dart';
+import 'package:streamt/view/movie/screens.dart/trendingpage.dart';
+import 'package:streamt/view/movie/screens.dart/tvshows.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -25,7 +29,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               actions: [
-                IconButton(icon: Icon(Icons.search), color: Colors.white, onPressed: () {  },),
+                IconButton(icon: Icon(Icons.search,size: 30,), color: Colors.white, onPressed: () { 
+                    Navigator.push(context, MaterialPageRoute(builder: (Builder)=>SearchPage()));
+
+                 },),
                 SizedBox(width: 10),
                 IconButton(
                   onPressed: (){
@@ -44,9 +51,9 @@ class HomeScreen extends StatelessWidget {
                 indicatorColor: red,
                 tabs: [
                   Tab(text: 'Home',),
-                  Tab(text: 'Movies'),
+                  Tab(text: 'Trending',),
                   Tab(text: 'TV Shows'),
-                    Tab(text: 'Videos'),
+                    Tab(text: 'Popular'),
                 ],
               ),
             ),
@@ -55,18 +62,13 @@ class HomeScreen extends StatelessWidget {
         body: TabBarView(
           children: [
           HomePageVideoPlayer(),
-            Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: Center(child: Text('Trending Content')),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: Center(child: Text('Subscriptions Content')),
-            ),
-              Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: Center(child: Text('Subscriptions Content')),
-            ),
+          
+            Trendinghomepage(),
+          
+            Tvshowshomepage(),
+          
+
+            Popularhomepage(),
           ],
         ),
       ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:streamt/view/movie/screens.dart/moviedetailspage.dart';
 import 'package:video_player/video_player.dart';
 
-class HomePageVideoPlayer extends StatefulWidget {
-  const HomePageVideoPlayer({super.key});
+class Tvshowshomepage extends StatefulWidget {
+  const Tvshowshomepage({super.key});
 
   @override
-  _HomePageVideoPlayerState createState() => _HomePageVideoPlayerState();
+  _TvshowshomepageState createState() => _TvshowshomepageState();
 }
 
-class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
+class _TvshowshomepageState extends State<Tvshowshomepage> {
   final String videoURL = "https://cdn.pixabay.com/video/2021/07/30/83274-581386222_tiny.mp4";
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
@@ -21,7 +21,7 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
     'https://i0.wp.com/sreditingzone.com/wp-content/uploads/2018/03/special-photo-4.png?resize=678%2C1024&ssl=1',
    'https://www.researchgate.net/profile/Stefan-Bolea/publication/309717420/figure/fig1/AS:425102790664192@1478363811754/Fight-Club-movie-poster-1999.png',
     'https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/6408f676b5811234c887ca62_top%20gun%20maverick-min.png',
-    'https://in.originalfilmart.com/cdn/shop/products/Lucy_2014_original_film_art_5000x.jpg?v=1636660403'
+    
     
   ];
 
@@ -77,7 +77,7 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Specials & Latest Movies',
+                  'Specials & Latest Tv shows',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
@@ -128,7 +128,7 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Movies Recommeded For You',
+                  'Tv shows Recommeded For You',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
