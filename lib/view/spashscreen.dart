@@ -20,7 +20,7 @@ class _spashscreenState extends State<spashscreen> {
 
   Future<void>spashscreen()async{
     await Future.delayed(Duration(seconds: 3));
-    Navigator.push(context, MaterialPageRoute(builder: (Builder)=>home()));
+    Navigator.push(context, MaterialPageRoute(builder: (Builder)=>Home()));
   }
 
 

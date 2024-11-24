@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203554695406",
+    "project_id": "stremit-e3c16",
+    "storage_bucket": "stremit-e3c16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203554695406:android:f89e1eb3e466a6ef1cebff",
+        "android_client_info": {
+          "package_name": "com.example.streamt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpRyrCa2fwWLQgN6JCUELdoD1GZg6bBZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

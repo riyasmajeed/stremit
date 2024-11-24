@@ -56,7 +56,7 @@ class _TvshowshomepageState extends State<Tvshowshomepage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 10,bottom: 10),
         child: Column(
           children: [
             FutureBuilder(

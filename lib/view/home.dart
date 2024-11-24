@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight+50),
           child: Padding(
-            padding: const EdgeInsets.only(top: 20,right: 10),
+            padding: const EdgeInsets.only(top: 0,right: 0),
             child: AppBar(
               automaticallyImplyLeading: false,
               backgroundColor: Colors.black,

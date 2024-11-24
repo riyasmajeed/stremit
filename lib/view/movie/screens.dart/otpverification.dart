@@ -85,7 +85,7 @@ class _OtpverificationState extends State<Otpverification> {
                       backgroundColor:  MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 0, 0))
                     ),
                       onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (Builder)=>home()));
+                          Navigator.push(context, MaterialPageRoute(builder: (Builder)=>Home()));
                       }, child: Center(
                       child: Text('Resend'),
                     ) ),
@@ -104,7 +104,7 @@ class _OtpverificationState extends State<Otpverification> {
                       backgroundColor:  MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 0, 0))
                     ),
                       onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (Builder)=>home()));
+                          Navigator.push(context, MaterialPageRoute(builder: (Builder)=>Home()));
                       }, child: Center(
                       child: Text('Confirm'),
                     ) ),
