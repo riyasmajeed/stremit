@@ -15,6 +15,7 @@ class BottomNavigationWidget extends StatelessWidget {
       valueListenable: indexchangeNotifier,
       builder: (context, int newIndex, _) {
         return Scaffold(
+           
           body: IndexedStack(
             index: newIndex,
             children: [

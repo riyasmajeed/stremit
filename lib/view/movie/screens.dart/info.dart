@@ -85,7 +85,7 @@ class InfoScreen extends StatelessWidget {
             Spacer(),
             
                 IconButton(onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (Builder)=>Profilepage()));
+                   Navigator.push(context, MaterialPageRoute(builder: (Builder)=>ProfilePage()));
                 }, icon:   Icon(Icons.edit,color: Colors.white,size: 30,))
             
                   
@@ -118,7 +118,7 @@ class InfoScreen extends StatelessWidget {
                 },
                 child: Text('Upgrade plan',style: TextStyle(
                   height: 1.1,
-                      color: Color.fromARGB(255, 253, 1, 1),fontSize: 16,fontWeight: FontWeight.bold
+                      color: Color.fromARGB(255, 1, 253, 60),fontSize: 18,fontWeight: FontWeight.bold
                     ),),
               ),
             

@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(width: 10),
                 IconButton(
                   onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (Builder)=>Profilepage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (Builder)=>ProfilePage()));
                   },
                    icon: Icon(Icons.person, size: 30, color: Colors.white), )
                

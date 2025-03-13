@@ -37,58 +37,62 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: _initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
-                  );
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
-            const SizedBox(height: 10),
-            _buildSectionTitle('Specials & Latest Movies'),
-            const SizedBox(height: 10),
-            FutureBuilder<List<Movie>>(
-              future: movieService.fetchPopularMovies(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Failed to load movies.'));
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No movies available.'));
-                } else {
-                  return _buildMovieList(snapshot.data!);
-                }
-              },
-            ),
-            _buildSectionTitle('Movies Recommended For You'),
-            const SizedBox(height: 10),
-            FutureBuilder<List<Movie>>(
-              future: movieService.fetchPopularMovies(), // Assume a similar API call for recommended movies
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Failed to load movies.'));
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No movies available.'));
-                } else {
-                  return _buildMovieList(snapshot.data!);
-                }
-              },
-            ),
-          ],
+    return Scaffold(
+       backgroundColor: Colors.black,
+      body: SingleChildScrollView(
+        
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          child: Column(
+            children: [
+              FutureBuilder(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
+              const SizedBox(height: 10),
+              _buildSectionTitle('Specials & Latest Movies'),
+              const SizedBox(height: 10),
+              FutureBuilder<List<Movie>>(
+                future: movieService.fetchPopularMovies(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Failed to load movies.'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('No movies available.'));
+                  } else {
+                    return _buildMovieList(snapshot.data!);
+                  }
+                },
+              ),
+              _buildSectionTitle('Movies Recommended For You'),
+              const SizedBox(height: 10),
+              FutureBuilder<List<Movie>>(
+                future: movieService.fetchPopularMovies(), // Assume a similar API call for recommended movies
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Failed to load movies.'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('No movies available.'));
+                  } else {
+                    return _buildMovieListreverse (snapshot.data!);
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -102,13 +106,13 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
           title,
           style: TextStyle(
             fontSize: 15,
-            color: Colors.white,
+            color: const Color.fromARGB(255, 255, 0, 0),
             fontWeight: FontWeight.bold,
           ),
         ),
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 15),
+          icon: Icon(Icons.arrow_forward_ios, color: const Color.fromARGB(255, 255, 1, 1), size: 15),
         ),
       ],
     );
@@ -121,6 +125,7 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
         itemBuilder: (context, index) {
+          
           final movie = movies[index];
           final posterUrl = movie.posterPath != null
               ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
@@ -153,4 +158,46 @@ class _HomePageVideoPlayerState extends State<HomePageVideoPlayer> {
       ),
     );
   }
+
+   Widget _buildMovieListreverse(List<Movie> movies) {
+    return Container(
+      height: 175,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+        int reverseINDEX =  movies.length  - 1 - index ;
+          final movie = movies[reverseINDEX];
+          final posterUrl = movie.posterPath != null
+              ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
+              : 'https://via.placeholder.com/500x750?text=No+Image';
+
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MovieDetailPage(imageUrl: posterUrl),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Container(
+                width: 115,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(posterUrl),
+                  ),
+                  color: Colors.cyan,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
 }
