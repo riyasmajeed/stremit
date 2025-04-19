@@ -1,14 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:streamt/controll/datacontroll.dart';
 import 'package:streamt/view/movie/mainpage.dart';
 import 'package:streamt/view/movie/screens.dart/profilepage.dart';
 import 'package:streamt/view/spashscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  Get.put(UserSQLController());
   runApp(const MyApp());
 }
 
